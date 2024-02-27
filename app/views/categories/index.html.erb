@@ -27,3 +27,6 @@
 </table>
 <%= will_paginate @categories %>
 <%= button_to "Add Category", new_category_path, method: :get %>
+<% unless @show_product_link %>
+  <%= button_to "Product List", products_path, method: :get %>
+<% end %>

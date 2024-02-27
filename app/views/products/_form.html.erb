@@ -1,0 +1,16 @@
+<%= form_with model: product do |form| %>
+  <div>
+    <%= form.label "Product Name" %><br>
+    <%= form.text_field :name %>
+    <% product.errors.full_messages_for(:name).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+  <div>
+    <%= form.label "Category" %><br>
+    <%= form.collection_select( :category, @categories, :id, :name, selected: @selected ) %>
+  </div>
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -10,7 +10,7 @@
   </div>
   <div>
     <%= form.label "Parent Category" %><br>
-    <%= form.collection_select(:parent, @categories, :id, :name, selected: nil, include_blank: true ) %>
+    <%= form.collection_select( :parent, @categories, :id, :name, selected: nil, include_blank: true ) %>
   </div>
   <div>
     <%= form.submit %>

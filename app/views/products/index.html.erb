@@ -1,0 +1,33 @@
+<%= turbo_include_tags %>
+<h1>Product List</h1>
+<table>
+  <tr>
+    <th>#</th>
+    <th>Name</th>
+    <th>Category</th>
+    <th>Actions</th>
+  </tr>
+  <% @products.each do |product| %>
+    <tr>
+      <td>
+        <%= product.id %>
+      </td>
+      <td>
+        <%= product.name %>
+      </td>
+      <td>
+        <%= product.category.name %>
+      </td>
+      <td>
+        <%= link_to "edit", edit_product_path(product) %>
+        <%= link_to "delete", product_path(product), data: {
+                    turbo_method: :delete,
+                    turbo_confirm: "Are you sure?"
+                  } %>
+      </td>
+    </tr>
+  <% end %>
+</table>
+<%= will_paginate @products %>
+<%= button_to "Add Product", new_product_path, method: :get %>
+<%= button_to "Category List", categories_path, method: :get %>
