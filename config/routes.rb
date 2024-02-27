@@ -9,6 +9,11 @@ Rails.application.routes.draw do
   # root "posts#index"
   root "articles#index"
 
+  get "/articles", to: "articles#index"
+  get "/categories", to: "categories#index"
+
+  resources :categories
+
   resources :articles do
     resources :comments
   end

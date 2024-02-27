@@ -1,0 +1,29 @@
+<h1>Category List</h1>
+<table>
+  <tr>
+    <th>#</th>
+    <th>Name</th>
+    <th>Children</th>
+  </tr>
+  <% @categories.each do |category| %>
+    <tr>
+      <td>
+        <%= category.id %>
+      </td>
+      <td>
+        <%= category.name %>
+      </td>
+      <td>
+        <% if category.children.exists? %>
+          <% category.children.each do |child| %>
+            <%= child.name + "," %>
+          <% end %>
+        <% else %>
+          -
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+</table>
+<%= will_paginate @categories %>
+<%= button_to "Add Category", new_category_path, method: :get %>
